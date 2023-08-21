@@ -194,6 +194,6 @@ def load_settings() -> Settings:
     dictionary = load_json("settings.json")
 
     if len(dictionary) == 0:
-        return DEFAULT_SETTINGS
+        dictionary = DEFAULT_SETTINGS
 
     return Settings.from_dict(dictionary)

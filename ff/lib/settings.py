@@ -1,6 +1,7 @@
 """Settings."""
 from dataclasses import dataclass
-import json
+
+from ff.lib.singleton import Singleton
 
 
 @dataclass
@@ -14,9 +15,8 @@ class InputSettings:
     def __dict__(self):
         return {"name_video": self.name_video, "fps": self.fps}
 
-
 @dataclass
-class Settings:
+class Settings(metaclass=Singleton):
     """
     Settings class.
     """
@@ -28,12 +28,19 @@ class Settings:
         show: bool,
         save_detection: str,
     ):
+        self.instance = self
         self.training = training
         self.input_settings = input_settings
         self.show = show
         self.save_detection = save_detection
 
     def to_dict(self) -> dict:
+        """
+        Converts the object to a dictionary representation.
+
+        Returns:
+            dict: A dictionary representation of the object.
+        """
         return {
             "training": self.training,
             "input_settings": self.input_settings.__dict__(),

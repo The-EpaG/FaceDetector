@@ -2,7 +2,7 @@
 from enum import Enum
 import os
 import sys
-from ff.lib.const import VIDEO_FOLDER
+from ff.lib.const import PROJECT_NAME, VIDEO_FOLDER
 from ff.lib.file import save_settings
 
 from ff.lib.settings import Settings
@@ -42,9 +42,9 @@ def menu(settings: Settings) -> Settings:
     while choice != 0:
         while True:
             text = [
-                "##############",
-                "# Find Faces #",
-                "##############",
+                "##" + len(PROJECT_NAME) * "#" + "##",
+                "# " + PROJECT_NAME + " #",
+                "##" + len(PROJECT_NAME) * "#" + "##",
                 "",
                 "0. Start",
                 "1. Training\t\t\t[" + str(settings.training) + "]",
